@@ -1,4 +1,6 @@
 ﻿using BusinessImplementationZone.Interfaces;
+using DataAccessLayer.Factories;
+using DataAccessLayer.Interfaces;
 using Objects;
 using Objects.Interfaces;
 using System.Collections.Generic;
@@ -8,9 +10,16 @@ namespace BusinessImplementationZone
 {
     public class RecipeRequests : IRecipeRequests
     {
-        public Task<IResult<IEnumerable<Recipe>>> GetSavedRecipes()
+        private IRecipeData _recipeDataInterface;
+        public IRecipeData RecipeDataInterface
         {
-            throw new System.NotImplementedException();
+            get { return _recipeDataInterface ?? (_recipeDataInterface = RecipeDataFactory.GetRecipeDataInterface()); }
+            set { _recipeDataInterface = value; }
+        }
+
+        public async Task<IResult<IEnumerable<Recipe>>> GetSavedRecipes()
+        {
+            return await RecipeDataInterface.GetSavedRecipes();
         }
     }
 }
