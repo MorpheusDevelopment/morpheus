@@ -27,5 +27,20 @@ namespace DataAccessLayer_Tests
             var actual = savedRecipes.Value.Where(x => x.Name == expected.Name);
             Assert.IsNotEmpty(actual);
         }
+
+        [Test, Category("RecipeData SaveRecipe AddsExpected")]
+        public async Task RecipeData_SaveRecipe_AddsExpected()
+        {
+            //Create and save a new recipe.
+            var expected = new Recipe { Name = "New Recipe" };
+            await _target.SaveRecipe(expected);
+
+            //Get the list of recipes and make sure it saved as expected.
+            var savedRecipes = await _target.GetSavedRecipes();
+            var actual = savedRecipes.Value.Where(x => x.Name == expected.Name);
+
+            //Verify the expected recipe is no longer in the list.
+            Assert.IsNotEmpty(actual);
+        }
     }
 }

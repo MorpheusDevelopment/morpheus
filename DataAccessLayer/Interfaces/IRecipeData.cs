@@ -8,5 +8,6 @@ namespace DataAccessLayer.Interfaces
     public interface IRecipeData
     {
         Task<IResult<IEnumerable<Recipe>>> GetSavedRecipes();
+        Task<IError> SaveRecipe(Recipe recipe);
     }
 }

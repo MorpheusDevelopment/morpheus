@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\Objects\Objects.csproj" />
+    <ProjectReference Include="..\TestRepository\TestRepository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using Objects.Generics;
 using Objects.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer
@@ -80,6 +81,31 @@ namespace DataAccessLayer
                 {
                     Errors = new List<IError> { new Error { ErrorMessage = e.Message, Suggestions = _dataConnectionUnavailable } }
                 };
+            }
+        }
+
+        public async Task<IError> SaveRecipe(Recipe recipe)
+        {
+            try
+            {
+                //Check to see if the save is an update to existing.
+                if (recipe.Id != null)
+                    _mockedDataSource.Remove(_mockedDataSource.Where(x => x.Id == recipe.Id).FirstOrDefault());
+
+                //If the recipe is new we need to auto increment the Id, notmally this is handled by the data store.
+                if (recipe.Id == null)
+                {
+                    var currentMaxIdRecipe = _mockedDataSource.OrderByDescending(x => x.Id).FirstOrDefault();
+                    recipe.Id = new Id<Recipe>(currentMaxIdRecipe == null ? 1 : currentMaxIdRecipe.Id.Value + 1);
+                }
+
+                //Add the new recipe and return out no error.
+                _mockedDataSource.Add(recipe);
+                return null;
+            }
+            catch (Exception e)
+            {
+                return new Error { ErrorMessage = e.Message, Suggestions = _dataConnectionUnavailable };
             }
         }
     }

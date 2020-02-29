@@ -2,7 +2,10 @@
 using DataAccessLayer.Interfaces;
 using Moq;
 using NUnit.Framework;
+using Objects;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using TestRepository.Extenders;
 
 namespace BusinessImplementationZone_Tests
 {
@@ -11,6 +14,11 @@ namespace BusinessImplementationZone_Tests
     {
         private RecipeRequests _target;
         private Mock<IRecipeData> _mockedRecipeDataInterface;
+        private Recipe _defaultRecipe = new Recipe {
+            Name = "Some Name",
+            Ingredients = new List<Ingredient> { new Ingredient() },
+            Instructions = "Some Instructions"
+        };
 
         [SetUp]
         public void SetUp()
@@ -47,6 +55,36 @@ namespace BusinessImplementationZone_Tests
             await _target.GetSavedRecipes();
 
             Assert.AreEqual(expectedCallCount, actualCallCount);
+        }
+
+        [Test, Category("RecipeRequests SaveRecipe DoesntExplodOnNull")]
+        public void RecipeRequests_SaveRecipe_DoesntExplodOnNull_Test()
+        {
+            AssertExtenders.DoesntThrowException(() => _target.SaveRecipe(null));
+        }
+
+        [Test, Category("RecipeRequests SaveRecipe CallsDal")]
+        public async Task RecipeRequests_SaveRecipe_CallsDal_Test()
+        {
+            const int expectedCallCount = 1;
+            var actualCallCount = 0;
+
+            _mockedRecipeDataInterface.Setup(x => x.SaveRecipe(It.IsAny<Recipe>())).Callback(() => actualCallCount++);
+            _target.RecipeDataInterface = _mockedRecipeDataInterface.Object;
+
+            await _target.SaveRecipe(_defaultRecipe);
+
+            Assert.AreEqual(expectedCallCount, actualCallCount);
+        }
+
+        [Test, Category("RecipeRequests SaveRecipe CallsDal")]
+        public async Task RecipeRequests_SaveRecipe_ReturnExpectedValidationErrors_Test()
+        {
+            var expected = "Recipe Name can not be blank.";
+            _defaultRecipe.Name = string.Empty;
+            var result = await _target.SaveRecipe(_defaultRecipe);
+
+            AssertExtenders.ContainsSuggestion(expected, result);
         }
     }
 }
