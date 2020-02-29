@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="filled in" xml:space="preserve">
+    <value>rempli</value>
+  </data>
   <data name="Ingredient" xml:space="preserve">
     <value>Ingrédient</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="Missing" xml:space="preserve">
     <value>Disparu</value>
+  </data>
+  <data name="must be" xml:space="preserve">
+    <value>doit être</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nom</value>

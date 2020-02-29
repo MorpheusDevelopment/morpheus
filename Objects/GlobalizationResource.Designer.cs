@@ -61,6 +61,15 @@ namespace Objects {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to filled in.
+        /// </summary>
+        internal static string filled_in {
+            get {
+                return ResourceManager.GetString("filled in", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredient.
         /// </summary>
         internal static string Ingredient {
@@ -84,6 +93,15 @@ namespace Objects {
         internal static string Missing {
             get {
                 return ResourceManager.GetString("Missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to must be.
+        /// </summary>
+        internal static string must_be {
+            get {
+                return ResourceManager.GetString("must be", resourceCulture);
             }
         }
         

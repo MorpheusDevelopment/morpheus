@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessImplementationZone", "BusinessImplementationZone\BusinessImplementationZone.csproj", "{274F72F6-F0AC-45A4-BD88-462BCB89C20E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessImplementationZone", "BusinessImplementationZone\BusinessImplementationZone.csproj", "{274F72F6-F0AC-45A4-BD88-462BCB89C20E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{98DF8216-668C-4CB1-ADD1-5E9EBA2A2CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{98DF8216-668C-4CB1-ADD1-5E9EBA2A2CE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Objects", "Objects\Objects.csproj", "{245DC0BB-4A16-4D6C-ABD0-8098B14B7381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessImplementationZone_Tests", "BusinessImplementationZone_Tests\BusinessImplementationZone_Tests.csproj", "{F8F7E2E4-A8B7-42D3-84B3-2AF0768AA6B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessImplementationZone_Tests", "BusinessImplementationZone_Tests\BusinessImplementationZone_Tests.csproj", "{F8F7E2E4-A8B7-42D3-84B3-2AF0768AA6B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer_Tests", "DataAccessLayer_Tests\DataAccessLayer_Tests.csproj", "{14E8E4AD-4CEF-4042-B2CD-FA21FB75E9E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer_Tests", "DataAccessLayer_Tests\DataAccessLayer_Tests.csproj", "{14E8E4AD-4CEF-4042-B2CD-FA21FB75E9E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRepository", "TestRepository\TestRepository.csproj", "{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestRepository", "TestRepository\TestRepository.csproj", "{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMvcSite", "SimpleMvcSite\SimpleMvcSite.csproj", "{E6F06431-7980-4437-A5A7-B7BC1138A3C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMvcSite", "SimpleMvcSite\SimpleMvcSite.csproj", "{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6F06431-7980-4437-A5A7-B7BC1138A3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6F06431-7980-4437-A5A7-B7BC1138A3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6F06431-7980-4437-A5A7-B7BC1138A3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6F06431-7980-4437-A5A7-B7BC1138A3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
