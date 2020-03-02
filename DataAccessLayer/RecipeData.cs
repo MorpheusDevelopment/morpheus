@@ -95,13 +95,38 @@ namespace DataAccessLayer
                 //If the recipe is new we need to auto increment the Id, notmally this is handled by the data store.
                 if (recipe.Id == null)
                 {
-                    var currentMaxIdRecipe = _mockedDataSource.OrderByDescending(x => x.Id).FirstOrDefault();
+                    var currentMaxIdRecipe = _mockedDataSource.OrderByDescending(x => (int)x.Id.Value).FirstOrDefault();
                     recipe.Id = new Id<Recipe>(currentMaxIdRecipe == null ? 1 : currentMaxIdRecipe.Id.Value + 1);
                 }
 
                 //Add the new recipe and return out no error.
                 _mockedDataSource.Add(recipe);
                 return null;
+            }
+            catch (Exception e)
+            {
+                return new Error { ErrorMessage = e.Message, Suggestions = _dataConnectionUnavailable };
+            }
+        }
+
+        public async Task<IError> DeleteRecipe(Id<Recipe> recipeId)
+        {
+            try
+            {
+                var existing = _mockedDataSource.Where(x => x.Id == recipeId).FirstOrDefault();
+                if (existing != null)
+                {
+                    _mockedDataSource.Remove(existing);
+                    return null;
+                }
+                else
+                    return new Error
+                    {
+                        ErrorMessage = "Record did not exist to be removed.",
+                        Suggestions = new List<string> { "Record was already removed." }
+                    };
+
+
             }
             catch (Exception e)
             {

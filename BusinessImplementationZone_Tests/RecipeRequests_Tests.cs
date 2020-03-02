@@ -3,6 +3,7 @@ using DataAccessLayer.Interfaces;
 using Moq;
 using NUnit.Framework;
 using Objects;
+using Objects.Generics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestRepository.Extenders;
@@ -85,6 +86,20 @@ namespace BusinessImplementationZone_Tests
             var result = await _target.SaveRecipe(_defaultRecipe);
 
             AssertExtenders.ContainsSuggestion(expected, result);
+        }
+
+        [Test, Category("RecipeRequests DeleteRecipe CallsDal")]
+        public async Task RecipeRequests_DeleteRecipe_CallsDal_Test()
+        {
+            const int expectedCallCount = 1;
+            var actualCallCount = 0;
+
+            _mockedRecipeDataInterface.Setup(x => x.DeleteRecipe(It.IsAny<Id<Recipe>>())).Callback(() => actualCallCount++);
+            _target.RecipeDataInterface = _mockedRecipeDataInterface.Object;
+
+            await _target.DeleteRecipe(new Id<Recipe>());
+
+            Assert.AreEqual(expectedCallCount, actualCallCount);
         }
     }
 }

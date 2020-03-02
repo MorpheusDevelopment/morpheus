@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using NUnit.Framework;
 using Objects;
+using Objects.Generics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,9 @@ namespace DataAccessLayer_Tests
         public void Setup()
         {
             _target = new RecipeData();
+
+            // This is hackish but beacuse of the fake dal being initalized on first get.
+            _target.GetSavedRecipes();
         }
 
         [Test, Category("RecipeData GetSavedRecipes RetrievesExpected")]
@@ -41,6 +45,29 @@ namespace DataAccessLayer_Tests
 
             //Verify the expected recipe is no longer in the list.
             Assert.IsNotEmpty(actual);
+        }
+
+        [Test, Category("RecipeData DeleteRecipe RemovesExpected")]
+        public async Task RecipeData_DeleteRecipe_RemovesExpected()
+        {
+            //Create and save a new recipe.
+            var expected = new Recipe { Name = "New Recipe" };
+            await _target.SaveRecipe(expected);
+
+            //Get the list of recipes and make sure it saved as expected.
+            var savedRecipes = await _target.GetSavedRecipes();
+            var recipies = savedRecipes.Value.Where(x => x.Name == expected.Name);
+            Assert.IsNotEmpty(recipies);
+
+            //Remove the expected recipe and get the updated list.
+            await _target.DeleteRecipe(new Id<Recipe>(expected.Id.Value));
+            savedRecipes = await _target.GetSavedRecipes();
+
+            //Verify the expected recipe no longer exists.
+            Assert.NotNull(savedRecipes);
+
+            var actual = savedRecipes.Value.Where(x => x.Name == expected.Name);
+            Assert.IsEmpty(actual);
         }
     }
 }

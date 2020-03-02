@@ -6,6 +6,7 @@ using Objects.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Objects.Generics;
 
 namespace BusinessImplementationZone
 {
@@ -39,6 +40,11 @@ namespace BusinessImplementationZone
                 return new Error { ErrorMessage = "Validation Failed", Suggestions = validationMessages };
 
             return await RecipeDataInterface.SaveRecipe(recipe);
+        }
+
+        public async Task<IError> DeleteRecipe(Id<Recipe> recipeId)
+        {
+            return await RecipeDataInterface.DeleteRecipe(recipeId);
         }
     }
 }
