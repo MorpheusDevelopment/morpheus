@@ -1,6 +1,7 @@
-﻿using DataAccessLayer.Interfaces;
+﻿using DataAccessLayer;
+using DataAccessLayer.Interfaces;
 
-namespace DataAccessLayer.Factories
+namespace BusinessImplementationZone.Factories
 {
     public static class RecipeDataFactory
     {

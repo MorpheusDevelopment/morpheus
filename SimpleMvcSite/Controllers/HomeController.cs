@@ -9,11 +9,6 @@ namespace SimpleMvcSite.Controllers
             return View();
         }
 
-        public IActionResult Recipes()
-        {
-            return View();
-        }
-
         public IActionResult Error()
         {
             return View();

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessImplementationZone"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{98DF8216-668C-4CB1-ADD1-5E9EBA2A2CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Objects", "Objects\Objects.csproj", "{245DC0BB-4A16-4D6C-ABD0-8098B14B7381}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Objects", "Objects\Objects.csproj", "{245DC0BB-4A16-4D6C-ABD0-8098B14B7381}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessImplementationZone_Tests", "BusinessImplementationZone_Tests\BusinessImplementationZone_Tests.csproj", "{F8F7E2E4-A8B7-42D3-84B3-2AF0768AA6B7}"
 EndProject
@@ -15,7 +15,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer_Tests", "Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestRepository", "TestRepository\TestRepository.csproj", "{49CCE8D7-4102-49A3-AA61-5E25E1CC0FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMvcSite", "SimpleMvcSite\SimpleMvcSite.csproj", "{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMvcSite", "SimpleMvcSite\SimpleMvcSite.csproj", "{DE6F34F0-433D-4DF4-BAA7-DA19F7D55DC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2E1502F-5F7A-40AC-BBE5-B231EFB87C33}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		_config.yml = _config.yml
+		index.md = index.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
