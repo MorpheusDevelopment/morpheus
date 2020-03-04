@@ -7,6 +7,9 @@ import { DefaultComponent } from '../AngularControllers/_default.component';
 //Includes for project pages.
 import { RecipesComponent } from '../AngularControllers/recipe.component';
 
+//Includes for Error pages.
+import { ErrorsPageNotFoundComponent } from '../AngularControllers/errors-page-not-found.component';
+
 const routes: Routes = [
 
   //Routes for default/base pages.
@@ -16,7 +19,7 @@ const routes: Routes = [
     path: "Recipes", children: [
       { path: '', component: RecipesComponent }
     ]
-  }
+  },
 
   //Catch all route.
   { path: '**', component: ErrorsPageNotFoundComponent }

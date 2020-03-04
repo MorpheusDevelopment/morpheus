@@ -6,10 +6,9 @@
   <meta charset="utf-8">
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index, follow">
-  <meta name="application-name" content="@{@GlobalizationResource.Company_Name}">
-  <meta property="og:title" content="@{@GlobalizationResource.Company_Name}">
-  <meta property="og:site_name" content="@{@GlobalizationResource.Company_Name}">
-  <meta property="og:url" content="@{@GlobalizationResource.Company_Url}">
+  <meta name="application-name" content="@{@GlobalizationResource.Business_Name}">
+  <meta property="og:title" content="@{@GlobalizationResource.Business_Name}">
+  <meta property="og:site_name" content="@{@GlobalizationResource.Business_Name}">
   <meta property="og:locale" content="es_ES">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy"
@@ -24,16 +23,10 @@
             https://*.gstatic.com
             https://*.googleapis.com
             https://cdnjs.cloudflare.com
-            https://@{@GlobalizationResource.Company_Url}
-            https://@{@GlobalizationResource.Company_Url}:5001;
-          img-src
-            data:
-            https://@{@GlobalizationResource.Company_Url}
-            https://@{@GlobalizationResource.Company_Url}:5001;
         ">
 
   <base href="/">
-  <title>@{@GlobalizationResource.Company_Name}</title>
+  <title>@{@GlobalizationResource.Business_Name}</title>
 
   <link rel="icon" type="image/x-icon" href="~/Images/favicon.ico">
   @*Include Styles, this is dynamically done via ng build*@
