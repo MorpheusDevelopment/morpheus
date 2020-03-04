@@ -2,8 +2,10 @@ import { __decorate } from "tslib";
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 let AppComponent = class AppComponent {
-    constructor() {
+    constructor(errorsService) {
+        this.errorsService = errorsService;
         this.applicationUrl = environment.siteBaseUrl;
+        this.errorsService.currentErrorList.subscribe(x => this.errorList = x);
     }
 };
 AppComponent = __decorate([

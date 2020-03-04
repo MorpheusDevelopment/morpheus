@@ -13,3 +13,19 @@
 
 <footer>
 </footer>
+
+<div *ngIf="!(errorList.length < 1 || errorList == undefined)">
+  <div class='modal-overlay' (click)='dismissErrors()'>
+    <div class='modal-dialog' (click)='modalClicked($event)'>
+      <div class='modal-close' (click)='dismissErrors()'>X</div>
+      <div class='modal-content'>
+        <ul>
+          <li *ngFor="let error of errorList;">
+            {{ error }}
+            <ul><li *ngFor="let suggestion of error.suggestions;">{{ suggestion }}</li></ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { __decorate } from "tslib";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './Routing/app-routing.module';
 import { AppComponent } from './app.component';
 //Includes for default/base pages.
@@ -21,7 +22,8 @@ AppModule = __decorate([
         ],
         imports: [
             BrowserModule,
-            AppRoutingModule
+            AppRoutingModule,
+            HttpClientModule
         ],
         providers: [],
         bootstrap: [AppComponent]

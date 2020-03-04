@@ -5,8 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="src\app\Models\" />
+    <None Remove="src\app\Models\error.ts" />
+    <None Remove="src\app\Models\Generics\id.ts" />
+    <None Remove="src\app\Models\Generics\result.ts" />
+    <None Remove="src\app\Models\recipeModels.ts" />
+    <None Remove="src\app\Services\modal-errors.service.ts" />
+    <None Remove="src\app\Services\recipe-requests.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Images\" />
     <Folder Include="wwwroot\Styles\" />
     <Folder Include="wwwroot\Scripts\" />
@@ -15,6 +22,15 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessImplementationZone\BusinessImplementationZone.csproj" />
     <ProjectReference Include="..\Objects\Objects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\Models\error.ts" />
+    <TypeScriptCompile Include="src\app\Models\Generics\id.ts" />
+    <TypeScriptCompile Include="src\app\Models\Generics\result.ts" />
+    <TypeScriptCompile Include="src\app\Models\recipeModels.ts" />
+    <TypeScriptCompile Include="src\app\Services\modal-errors.service.ts" />
+    <TypeScriptCompile Include="src\app\Services\recipe-requests.service.ts" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

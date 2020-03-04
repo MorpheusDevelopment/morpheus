@@ -21,8 +21,7 @@
             https://*.google-analytics.com
             https://*.googletagmanager.com
             https://*.gstatic.com
-            https://*.googleapis.com
-            https://cdnjs.cloudflare.com
+            https://*.googleapis.com;
         ">
 
   <base href="/">
@@ -36,12 +35,6 @@
 
   @RenderBody()
   <app-root></app-root>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-          asp-fallback-test="window.jQuery"
-          crossorigin="anonymous"
-          integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh">
-  </script>
 
   @RenderSection("Scripts", required: false)
   @*Include Scripts, this is dynamically done via ng build*@
