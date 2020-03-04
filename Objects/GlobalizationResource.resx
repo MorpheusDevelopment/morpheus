@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Business Name" xml:space="preserve">
+    <value>Sample Business</value>
+  </data>
+  <data name="Endpoint Type" xml:space="preserve">
+    <value>MVC Site</value>
+  </data>
+  <data name="Simple" xml:space="preserve">
+    <value>Simple</value>
+  </data>
+  <data name="Hybrid" xml:space="preserve">
+    <value>Hybrid</value>
+  </data>
   <data name="filled in" xml:space="preserve">
     <value>filled in</value>
   </data>

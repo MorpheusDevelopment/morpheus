@@ -22,7 +22,7 @@ namespace Objects {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class GlobalizationResource {
+    public class GlobalizationResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -59,11 +59,52 @@ namespace Objects {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Business.
+        /// </summary>
+        public static string Business_Name {
+            get {
+                return ResourceManager.GetString("Business Name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MVC Site.
+        /// </summary>
+        public static string Endpoint_Type
+        {
+            get {
+                return ResourceManager.GetString("Endpoint Type", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Simple.
+        /// </summary>
+        public static string Simple
+        {
+            get
+            {
+                return ResourceManager.GetString("Simple", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hybrid.
+        /// </summary>
+        public static string Hybrid
+        {
+            get
+            {
+                return ResourceManager.GetString("Hybrid", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to filled in.
         /// </summary>
-        internal static string filled_in {
+        public static string filled_in {
             get {
                 return ResourceManager.GetString("filled in", resourceCulture);
             }
@@ -72,7 +113,7 @@ namespace Objects {
         /// <summary>
         ///   Looks up a localized string similar to Ingredient.
         /// </summary>
-        internal static string Ingredient {
+        public static string Ingredient {
             get {
                 return ResourceManager.GetString("Ingredient", resourceCulture);
             }
@@ -81,7 +122,7 @@ namespace Objects {
         /// <summary>
         ///   Looks up a localized string similar to Instructions.
         /// </summary>
-        internal static string Instructions {
+        public static string Instructions {
             get {
                 return ResourceManager.GetString("Instructions", resourceCulture);
             }
@@ -90,7 +131,7 @@ namespace Objects {
         /// <summary>
         ///   Looks up a localized string similar to Missing.
         /// </summary>
-        internal static string Missing {
+        public static string Missing {
             get {
                 return ResourceManager.GetString("Missing", resourceCulture);
             }
@@ -99,7 +140,7 @@ namespace Objects {
         /// <summary>
         ///   Looks up a localized string similar to must be.
         /// </summary>
-        internal static string must_be {
+        public static string must_be {
             get {
                 return ResourceManager.GetString("must be", resourceCulture);
             }
@@ -108,7 +149,7 @@ namespace Objects {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string Name {
+        public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
