@@ -351,3 +351,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+/package-lock.json
+/HybridMvcSite/e2e
+/HybridMvcSite/wwwroot/Images
+/HybridMvcSite/wwwroot/Scripts
+/HybridMvcSite/wwwroot/Styles
