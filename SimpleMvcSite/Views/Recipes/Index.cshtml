@@ -1,14 +1,90 @@
-﻿
+﻿@model IEnumerable<SimpleMvcSite.Models.RecipeModel>
+@using SimpleMvcSite.Models
+
 @section Scripts
 {
-    <script src="@Url.Content("~/js/recipe.js")"></script>
+    <script src="@Url.Content("~/js/recipe.js")" asp-append-version="true"></script>
+}
+@section Styles {
+    <link href="@Url.Content("~/css/recipe.css")" rel="stylesheet" type="text/css" />
 }
 @{
     ViewData["Title"] = "Recipies";
 }
 
-<div>
-    <h1>Welcome</h1>
-    <p>To the recipes page.</p>
-    <p>To the home <a href="~/">home page.</a></p>
+<div class="recipeSelection">
+    <ul>
+        <li class="recipeListItem"><button onclick="recipeClicked('addRecipe')">Add New Recipe</button></li>
+        @foreach (var recipe in Model)
+        {
+            <li id="ListItem @recipe.Id"
+                class="recipeListItem"
+                title="@recipe.Name">
+                <span onclick="recipeClicked('@recipe.Id')">@recipe.Name</span>
+
+                <button class="close" onclick="deleteRecipe('@recipe.Id')">&times;</button>
+            </li>
+        }
+    </ul>
 </div>
+<div class="recipeDetails">
+    @foreach (var recipe in Model)
+    {
+        <div id="@recipe.Id" hidden>
+            <div id="name @recipe.Id" class="recipeName">@recipe.Name</div>
+            <div id="description @recipe.Id" class="recipeDescription">@recipe.Description</div>
+
+            <div class="header">
+                Ingredients
+            </div>
+            <div class="ingredientsBody">
+                <div id="ingredientCount @recipe.Id" hidden>@recipe.Ingredients.Count()</div>
+                @{int i = 1;}
+                @foreach (var ingredient in recipe.Ingredients)
+                {
+                    <span id="ingredientAmount @recipe.Id @i">@ingredient.Amount</span>
+                    @:&nbsp
+                    <span id="ingredientInstrument @recipe.Id @i" hidden>@Convert.ToInt32(ingredient.Instrument)</span>
+
+                    if (@ingredient.Instrument != SimpleMvcSite.Models.MeasuringTypeModel.Item)
+                    {
+                        <span>@ingredient.Instrument</span>
+                        @:&nbsp
+                    }
+                    <span id="ingredientName @recipe.Id @i">@ingredient.Name</span>
+                    i++;
+                    <br />
+                }
+            </div>
+
+            <div class="header">
+                Directions
+            </div>
+            <div id="instructions @recipe.Id" class="instructionsBody">@recipe.Instructions</div>
+            <button onclick="editRecipe()">Edit Recipe</button>
+        </div>
+    }
+    <div id="addRecipe" hidden>
+        <div id="recipeId" hidden>0</div>
+        <label for="recipeNameLabel" class="feildDispalyName">Recipe Name:</label>
+        <input type="text" id="recipeNameInput" name="recipeNameLabel" class="feildInputBox"><br />
+        <label for="recipeDescriptionLabel" class="feildDispalyName">Recipe Description:</label>
+        <input type="text" id="recipeDescriptionInput" name="recipeDescriptionLabel" class="feildInputBox"><br />
+        <div>
+            <label class="feildDispalyName" for="recipeIngredientsLabel">Ingredients:</label><br />
+            <div id="ingredientFeild" class="ingredientRow" hidden>
+                <label for="ingredientAmountFeildLabel">Amount:</label>
+                <input type="number" step=".01" id="ingredientAmountFeildInput" class="ingredientAmount" name="ingredientAmountFeildLabel">
+                @Html.DropDownList("ingredientInsrument", Enum.GetValues(typeof(MeasuringTypeModel)).Cast<MeasuringTypeModel>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }))
+                <label for="ingredientNameFeildLabel">Item:</label>
+                <input type="text" id="ingredientNameFeildInput" name="ingredientNameFeildLabel" class="ingredientFeild">
+                <button class="close">&times;</button>
+            </div>
+        </div>
+        <button onclick="addIngredient()">Add Ingredient</button><br />
+        <label class="feildDispalyName" for="recipeDirectionsLabel">Directions:</label><br />
+        <textarea id="recipeDirectionsInput" name="recipeDirectionsLabel" class="instructionsInputFeild"></textarea><br />
+        <button onclick="saveRecipe()">Save Recipe</button>
+    </div>
+</div>
+<div class="clear"></div>
