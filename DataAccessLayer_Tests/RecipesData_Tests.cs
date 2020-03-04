@@ -17,7 +17,7 @@ namespace DataAccessLayer_Tests
         {
             _target = new RecipeData();
 
-            // This is hackish but beacuse of the fake dal being initalized on first get.
+            // This is hackish, but is needed beacuse of the fake dal being initalized on 'first' get.
             _target.GetSavedRecipes();
         }
 
