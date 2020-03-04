@@ -1,0 +1,64 @@
+@using Objects
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="index,follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="application-name" content="@{@GlobalizationResource.Company_Name}">
+  <meta property="og:title" content="@{@GlobalizationResource.Company_Name}">
+  <meta property="og:site_name" content="@{@GlobalizationResource.Company_Name}">
+  <meta property="og:url" content="@{@GlobalizationResource.Company_Url}">
+  <meta property="og:locale" content="es_ES">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src
+            'self'
+            'unsafe-inline'
+            'unsafe-eval'
+            https://*.google.com
+            https://*.google-analytics.com
+            https://*.googletagmanager.com
+            https://*.gstatic.com
+            https://*.googleapis.com
+            https://cdnjs.cloudflare.com
+            https://@{@GlobalizationResource.Company_Url}
+            https://@{@GlobalizationResource.Company_Url}:5001;
+          img-src
+            data:
+            https://@{@GlobalizationResource.Company_Url}
+            https://@{@GlobalizationResource.Company_Url}:5001;
+        ">
+
+  <base href="/">
+  <title>@{@GlobalizationResource.Company_Name}</title>
+
+  <link rel="icon" type="image/x-icon" href="~/Images/favicon.ico">
+  @*Include Styles, this is dynamically done via ng build*@
+  <link rel="stylesheet" href="~/Styles/styles.css">
+</head>
+<body>
+
+  @RenderBody()
+  <app-root></app-root>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+          asp-fallback-test="window.jQuery"
+          crossorigin="anonymous"
+          integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh">
+  </script>
+
+  @RenderSection("Scripts", required: false)
+  @*Include Scripts, this is dynamically done via ng build*@
+  <script src="~/Scripts/runtime-es2018.js" type="module"></script>
+  <script src="~/Scripts/runtime-es5.js" nomodule defer></script>
+  <script src="~/Scripts/polyfills-es5.js" nomodule defer></script>
+  <script src="~/Scripts/polyfills-es2018.js" type="module"></script>
+  <script src="~/Scripts/vendor-es2018.js" type="module"></script>
+  <script src="~/Scripts/vendor-es5.js" nomodule defer></script>
+  <script src="~/Scripts/main-es2018.js" type="module"></script>
+  <script src="~/Scripts/main-es5.js" nomodule defer></script>
+</body>
+</html>
