@@ -1,3 +1,27 @@
-<section>
-  <h2>{{ title }}</h2>
-</section>
+<div class="recipeSelection">
+  <ul>
+    <li class="recipeListItem"><button (click)="recipeClicked(0)">Add New Recipe</button></li>
+    <li class="recipeListItem" *ngFor="let recipe of recipes" title="{{recipe.name}}">
+      <span (click)="recipeClicked(recipe.id)">{{ recipe.name }}</span>
+      <button class="close" (click)="deleteRecipe(recipe.id)">&times;</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="selectedRecipe">
+  <div class="recipeName">{{ selectedRecipe.name }}</div>
+  <div class="recipeDescription">{{ selectedRecipe.description }}</div>
+
+  <div class="header">Ingredients</div>
+  <div class="ingredientsBody" *ngFor="let ingredient of selectedRecipe.ingredients">
+    <span>{{ ingredient.Amount}} </span>
+    &nbsp;
+    <span *ngIf="selectedRecipe.instrument != 'Item'">{{ ingredient.instrument }}&nbsp;</span>
+    <span id="ingredientAmount @recipe.Id @i">{{ ingredient.name }}</span>
+  </div>
+
+  <div class="header">Directions</div>
+  <div id="instructions @recipe.Id" class="instructionsBody">{{ selectedRecipe.instructions }}</div>
+
+  <button (click)="editRecipe()">Edit Recipe</button>
+</div>
+<div class="clear"></div>

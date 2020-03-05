@@ -15,12 +15,25 @@ import { RecipeRequestsService } from '../Services/recipe-requests.service';
 export class RecipesComponent implements OnInit {
 
   public recipes: RecipeModel[];
+  public selectedRecipe: RecipeModel;
 
   public title: string;
   constructor(
     private errorsService: ModalErrorsService,
     private recipeRequests: RecipeRequestsService)
   { }
+
+  public recipeClicked(recipeId: number): void {
+    this.selectedRecipe = this.recipes.find(i => i.id === recipeId);
+  }
+
+  public addRecipe(): void {
+
+  }
+
+  public editRecipe() : void {
+
+  }
 
   ngOnInit() {
     this.recipes = new Array<RecipeModel>();
