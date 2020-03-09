@@ -43,7 +43,7 @@ namespace DataAccessLayer
                 {
                     Id = new Id<Recipe>(2),
                     Name = "Applesauce Cookies",
-                    Description = "A simple recipe for making Peanut Butter Cookies, 15 minute prep-time.",
+                    Description = "A simple recipe for making Applesauce Cookies, 15 minute prep-time.",
                     Ingredients = new List<Ingredient>
                     {
                         new Ingredient{ Name = "Softened Margarine or Butter", Instrument = MeasuringType.Cup, Amount = 0.75 },
