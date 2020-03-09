@@ -21,7 +21,7 @@
       <div class='modal-content'>
         <ul>
           <li *ngFor="let error of errorList;">
-            {{ error }}
+            {{ error.errorMessage }}
             <ul><li *ngFor="let suggestion of error.suggestions;">{{ suggestion }}</li></ul>
           </li>
         </ul>

@@ -17,6 +17,12 @@ export class ModalErrorsService {
     this.currentErrorList = this._errorListSubject.asObservable();
   }
 
+  addErrorsByError(error: Error) {
+    var currentErrors = this._errorListSubject.value;
+    currentErrors.push(error);
+    this._errorListSubject.next(currentErrors);
+  }
+
   addErrorsByErrorArray(errorList: Error[]) {
     var currentErrors = this._errorListSubject.value;
     for (var i = 0, len = errorList.length; i < len; ++i) {

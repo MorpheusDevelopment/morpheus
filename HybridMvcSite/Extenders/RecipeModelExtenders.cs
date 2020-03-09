@@ -30,7 +30,7 @@ namespace HybridMvcSite.Extenders
         {
             return new Recipe
             {
-                Id = recipeModel.Id == 0 ? (Id<Recipe>?)null : new Id<Recipe>(recipeModel.Id),
+                Id = new Id<Recipe>(recipeModel.Id),
                 Name = recipeModel.Name,
                 Description = recipeModel.Description,
                 Instructions = recipeModel.Instructions,

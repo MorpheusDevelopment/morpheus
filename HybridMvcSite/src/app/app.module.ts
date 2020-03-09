@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './Routing/app-routing.module';
 import { AppComponent } from './app.component';
-
 
 
 //Includes for default/base pages.
@@ -27,7 +27,8 @@ import { ErrorsPageNotFoundComponent } from './AngularControllers/errors-page-no
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

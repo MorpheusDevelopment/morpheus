@@ -1,6 +1,7 @@
+import { Id } from '../Models/Generics/id';
 
 export class RecipeModel {
-  id: number;
+  id: Id<RecipeModel>;
   name: string;
   description: string;
   ingredients: IngredientModel[];

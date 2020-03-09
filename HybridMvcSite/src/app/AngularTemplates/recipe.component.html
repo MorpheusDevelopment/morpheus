@@ -1,6 +1,6 @@
 <div class="recipeSelection">
   <ul>
-    <li class="recipeListItem"><button (click)="recipeClicked(0)">Add New Recipe</button></li>
+    <li class="recipeListItem"><button (click)="addRecipe()">Add New Recipe</button></li>
     <li class="recipeListItem" *ngFor="let recipe of recipes" title="{{recipe.name}}">
       <span (click)="recipeClicked(recipe.id)">{{ recipe.name }}</span>
       <button class="close" (click)="deleteRecipe(recipe.id)">&times;</button>
@@ -16,12 +16,64 @@
     <span>{{ ingredient.Amount}} </span>
     &nbsp;
     <span *ngIf="selectedRecipe.instrument != 'Item'">{{ ingredient.instrument }}&nbsp;</span>
-    <span id="ingredientAmount @recipe.Id @i">{{ ingredient.name }}</span>
+    <span>{{ ingredient.name }}</span>
   </div>
 
   <div class="header">Directions</div>
-  <div id="instructions @recipe.Id" class="instructionsBody">{{ selectedRecipe.instructions }}</div>
+  <div class="instructionsBody">{{ selectedRecipe.instructions }}</div>
 
   <button (click)="editRecipe()">Edit Recipe</button>
+</div>
+
+<div *ngIf="formRecipe">
+  <form #addRecipeForm="ngForm">
+    <div>
+      <span>Recipe Name:</span>
+      <input type="text"
+             required
+             [(ngModel)]="formRecipe.name"
+             placeholder="Peanutbutter Cookies"
+             name="recipeName">
+    </div>
+    <div>
+      <span>Recipe Description:</span>
+      <input type="text"
+             [(ngModel)]="formRecipe.description"
+             placeholder="15 minute prep time."
+             name="recipeDescription">
+    </div>
+    <div>
+      <span>Ingredients:</span>
+      <div *ngFor="let ingredient of formRecipe.ingredients; index as i">
+        <span>Item:</span>
+        <input type="number"
+               step=".01"
+               required
+               [(ngModel)]="ingredient.amount"
+               placeholder="0.5"
+               name="ingredientAmount{{i}}">
+        <mat-form-field>
+          <mat-label></mat-label>
+          <select matNativeControl required>
+            <option *ngFor="let measuringType of measuringTypes" [value]="measuringType">
+              {{ measuringType.toString() }}
+            </option>
+          </select>
+        </mat-form-field>
+        <input type="text"
+               required
+               [(ngModel)]="ingredient.name"
+               placeholder="Flour"
+               name="ingredientName{{i}}">
+        <button class="close" (click)="removeIngredient(i)">&times;</button>
+      </div>
+      <button (click)="addIngredient()">Add Ingredient</button>
+    </div>
+    <div>
+      <span>Directions:</span><br />
+      <!--<textArea [(ngModel)]="formRecipe.instructions" rows="8" cols="60" name="recipeInstructions" required></textArea>-->
+    </div>
+    <button (click)="saveRecipe()">Save Recipe</button>
+  </form>
 </div>
 <div class="clear"></div>

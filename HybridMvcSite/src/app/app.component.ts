@@ -21,4 +21,13 @@ export class AppComponent {
   ) {
     this.errorsService.currentErrorList.subscribe(x => this.errorList = x);
   }
+
+  public dismissErrors(): void {
+    this.errorsService.clearErrors();
+  }
+
+  public modalClicked(event: any): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

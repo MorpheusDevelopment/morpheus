@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BusinessImplementationZone.Interfaces;
 using HybridMvcSite.Extenders;
@@ -21,7 +23,10 @@ namespace HybridMvcSite.Controllers
     [HttpGet]
     public async Task<IActionResult> GetRecipes()
     {
-      return Json(await RecipeRequestsInterface.GetSavedRecipes());
+      var result = await RecipeRequestsInterface.GetSavedRecipes();
+      if (!result.Successful)
+        return Json(result);
+      return Json(new Result<IEnumerable<RecipeModel>> { Value = result.Value.Select(x => x.AsRecipeModel()) });
     }
 
     [HttpPost]
@@ -31,7 +36,7 @@ namespace HybridMvcSite.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(RecipeModel recipeToAdd)
+    public async Task<IActionResult> Add([FromBody]RecipeModel recipeToAdd)
     {
       return Json(await RecipeRequestsInterface.SaveRecipe(recipeToAdd.AsRecipe()));
     }

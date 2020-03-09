@@ -31,8 +31,9 @@ export class RecipeRequestsService {
   }
 
   public saveRecipe(request: RecipeModel) {
+    const body = JSON.stringify(request);
     return this.httpClient.post<Error>(
-      environment.siteBaseUrl + this._baseUrl + 'Add', request, httpOptions);
+      environment.siteBaseUrl + this._baseUrl + 'Add', body, httpOptions);
   }
 
   public deleteRecipe(request: Id<RecipeModel>) {

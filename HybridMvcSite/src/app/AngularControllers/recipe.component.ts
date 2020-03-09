@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RecipeModel } from '../Models/recipeModels';
+import { Id } from '../Models/Generics/id';
+import { RecipeModel, MeasuringTypeModel, IngredientModel } from '../Models/recipeModels';
 
 //Import services.
 import { ModalErrorsService } from '../Services/modal-errors.service';
@@ -14,8 +15,14 @@ import { RecipeRequestsService } from '../Services/recipe-requests.service';
 
 export class RecipesComponent implements OnInit {
 
+  measuringTypes: MeasuringTypeModel[] = [
+    MeasuringTypeModel.Cup,
+    MeasuringTypeModel.Dash
+  ];
+
   public recipes: RecipeModel[];
   public selectedRecipe: RecipeModel;
+  public formRecipe: RecipeModel;
 
   public title: string;
   constructor(
@@ -23,16 +30,51 @@ export class RecipesComponent implements OnInit {
     private recipeRequests: RecipeRequestsService)
   { }
 
-  public recipeClicked(recipeId: number): void {
+  public recipeClicked(recipeId: Id<RecipeModel>): void {
+    this.formRecipe = undefined;
     this.selectedRecipe = this.recipes.find(i => i.id === recipeId);
   }
 
   public addRecipe(): void {
-
+    this.selectedRecipe = undefined;
+    this.formRecipe = new RecipeModel();
   }
 
-  public editRecipe() : void {
+  public editRecipe(): void {
+    this.formRecipe = this.selectedRecipe;
+    this.selectedRecipe = undefined;
+  }
 
+  public addIngredient(): void {
+    this.formRecipe.ingredients.push(new IngredientModel());
+  }
+
+  public removeIngredient(ingredientIndexToRemove: number): void {
+    this.formRecipe.ingredients.splice(ingredientIndexToRemove, 1);
+  }
+
+  public saveRecipe(): void {
+    this.recipeRequests.saveRecipe(this.formRecipe)
+      .subscribe(
+        response => {
+          if (response !== undefined && response !== null)
+            this.errorsService.addErrorsByError(response)
+          else
+            window.location.reload();
+        },
+        err => console.log(err)
+      );
+  }
+
+  public deleteRecipe(): void {
+    this.recipeRequests.deleteRecipe(this.formRecipe.id)
+      .subscribe(
+        response => {
+          if (response !== undefined)
+            this.errorsService.addErrorsByError(response)
+        },
+        err => console.log(err)
+      );
   }
 
   ngOnInit() {
@@ -42,8 +84,8 @@ export class RecipesComponent implements OnInit {
       .subscribe(
         response => {
           if (response) {
-            response.value.forEach(email => {
-              this.recipes.push(email);
+            response.value.forEach(recipe => {
+              this.recipes.push(recipe);
             });
           } else {
               this.errorsService.addErrorsByErrorArray(response.errors)
