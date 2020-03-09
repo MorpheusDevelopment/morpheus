@@ -23,7 +23,7 @@ namespace Objects
 
     public enum MeasuringType
     {
-        Dash,
+        Dash = 1,
         Teaspoon,
         Tablespoon,
         Cup,
