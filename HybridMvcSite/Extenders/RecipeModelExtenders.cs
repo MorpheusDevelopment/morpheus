@@ -10,7 +10,7 @@ namespace HybridMvcSite.Extenders
     {
         public static RecipeModel AsRecipeModel(this Recipe recipe)
         {
-            return new RecipeModel
+            return recipe == null ? new RecipeModel() :  new RecipeModel
             {
                 Id = recipe.Id == null ? 0 : recipe.Id.Value,
                 Name = recipe.Name,
@@ -28,7 +28,7 @@ namespace HybridMvcSite.Extenders
 
         public static Recipe AsRecipe(this RecipeModel recipeModel)
         {
-            return new Recipe
+            return recipeModel == null ? new Recipe() : new Recipe
             {
                 Id = new Id<Recipe>(recipeModel.Id),
                 Name = recipeModel.Name,
