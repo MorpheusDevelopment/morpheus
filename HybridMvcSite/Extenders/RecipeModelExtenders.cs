@@ -3,6 +3,7 @@ using Objects.Generics;
 using HybridMvcSite.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace HybridMvcSite.Extenders
 {
@@ -21,7 +22,7 @@ namespace HybridMvcSite.Extenders
                    {
                        Name = x.Name,
                        Amount = x.Amount,
-                       Instrument = (MeasuringTypeModel)((int)x.Instrument)
+                       Instrument = ((int)x.Instrument).ToString()
                    }) : new List<IngredientModel>()
             };
         }
@@ -39,7 +40,7 @@ namespace HybridMvcSite.Extenders
                    {
                        Name = x.Name,
                        Amount = x.Amount,
-                       Instrument = (MeasuringType)((int)x.Instrument)
+                       Instrument = (MeasuringType)Enum.Parse(typeof(MeasuringType), x.Instrument),
                    }) : new List<Ingredient>()
             };
         }

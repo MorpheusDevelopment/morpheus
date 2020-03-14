@@ -16,17 +16,6 @@ namespace HybridMvcSite.Models
     {
         public string Name { get; set; }
         public double Amount { get; set; }
-        public MeasuringTypeModel Instrument { get; set; }
-    }
-
-    public enum MeasuringTypeModel
-    {
-        Dash,
-        Teaspoon,
-        Tablespoon,
-        Cup,
-        Gallon,
-        ToTaste,
-        Item
+        public string Instrument { get; set; }
     }
 }
