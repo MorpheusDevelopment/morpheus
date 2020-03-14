@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Id } from '../Models/Generics/id';
-import { RecipeModel, MeasuringTypeModel, IngredientModel } from '../Models/recipeModels';
+import { RecipeModel, MeasuringTypeModel, IngredientModel, DropdownViewModel } from '../Models/recipeModels';
 
 //Import services.
 import { ModalErrorsService } from '../Services/modal-errors.service';
@@ -14,30 +14,39 @@ import { RecipeRequestsService } from '../Services/recipe-requests.service';
 })
 
 export class RecipesComponent implements OnInit {
-
-  measuringTypes: MeasuringTypeModel[] = [
-    MeasuringTypeModel.Cup,
-    MeasuringTypeModel.Dash
-  ];
+  public excludedType: MeasuringTypeModel = MeasuringTypeModel.Item;
+  measuringTypes: typeof MeasuringTypeModel = MeasuringTypeModel;
 
   public recipes: RecipeModel[];
   public selectedRecipe: RecipeModel;
   public formRecipe: RecipeModel;
 
+  public dropdown: DropdownViewModel[];
+
   public title: string;
   constructor(
     private errorsService: ModalErrorsService,
     private recipeRequests: RecipeRequestsService)
-  { }
+  {
+    this.dropdown = [];
+    for (let measuringType in MeasuringTypeModel) {
+      if (!isNaN(parseInt(measuringType, 10))) {
+        var measuringTypeIntValue = parseInt(measuringType, 10);
+        this.dropdown.push({ value: measuringTypeIntValue.toString(), viewValue: MeasuringTypeModel[measuringTypeIntValue] })
+      }
+    }
+  }
 
   public recipeClicked(recipeId: Id<RecipeModel>): void {
     this.formRecipe = undefined;
+    this.selectedRecipe = undefined;
     this.selectedRecipe = this.recipes.find(i => i.id === recipeId);
   }
 
   public addRecipe(): void {
     this.selectedRecipe = undefined;
     this.formRecipe = new RecipeModel();
+    this.formRecipe.id = new Id<RecipeModel>(0);
   }
 
   public editRecipe(): void {
@@ -46,6 +55,8 @@ export class RecipesComponent implements OnInit {
   }
 
   public addIngredient(): void {
+    if (this.formRecipe.ingredients === undefined)
+      this.formRecipe.ingredients = [];
     this.formRecipe.ingredients.push(new IngredientModel());
   }
 

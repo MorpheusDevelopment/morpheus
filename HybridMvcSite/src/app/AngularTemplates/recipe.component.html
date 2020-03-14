@@ -13,9 +13,8 @@
 
   <div class="header">Ingredients</div>
   <div class="ingredientsBody" *ngFor="let ingredient of selectedRecipe.ingredients">
-    <span>{{ ingredient.Amount}} </span>
-    &nbsp;
-    <span *ngIf="selectedRecipe.instrument != 'Item'">{{ ingredient.instrument }}&nbsp;</span>
+    <span>{{ ingredient.amount}}&nbsp;</span>
+    <span *ngIf="selectedRecipe.instrument != excludedType">{{ measuringTypes[ingredient.instrument] }}&nbsp;</span>
     <span>{{ ingredient.name }}</span>
   </div>
 
@@ -54,9 +53,9 @@
                name="ingredientAmount{{i}}">
         <mat-form-field>
           <mat-label></mat-label>
-          <select matNativeControl required>
-            <option *ngFor="let measuringType of measuringTypes" [value]="measuringType">
-              {{ measuringType.toString() }}
+          <select matNativeControl [(ngModel)]="ingredient.instrument" name="ingredientInstrument{{i}}">
+            <option *ngFor="let item of dropdown" [value]="item.value">
+              {{ item.viewValue }}
             </option>
           </select>
         </mat-form-field>
@@ -71,7 +70,7 @@
     </div>
     <div>
       <span>Directions:</span><br />
-      <!--<textArea [(ngModel)]="formRecipe.instructions" rows="8" cols="60" name="recipeInstructions" required></textArea>-->
+      <textArea [(ngModel)]="formRecipe.instructions" ngDefaultControl  rows="8" cols="60" name="recipeInstructions" required></textArea>
     </div>
     <button (click)="saveRecipe()">Save Recipe</button>
   </form>

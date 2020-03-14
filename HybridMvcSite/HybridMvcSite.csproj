@@ -10,6 +10,7 @@
     <None Remove="src\app\Models\Generics\id.ts" />
     <None Remove="src\app\Models\Generics\result.ts" />
     <None Remove="src\app\Models\recipeModels.ts" />
+    <None Remove="src\app\Modules\material.module.ts" />
     <None Remove="src\app\Services\modal-errors.service.ts" />
     <None Remove="src\app\Services\recipe-requests.service.ts" />
   </ItemGroup>
@@ -30,6 +31,7 @@
     <TypeScriptCompile Include="src\app\Models\Generics\id.ts" />
     <TypeScriptCompile Include="src\app\Models\Generics\result.ts" />
     <TypeScriptCompile Include="src\app\Models\recipeModels.ts" />
+    <TypeScriptCompile Include="src\app\Modules\material.module.ts" />
     <TypeScriptCompile Include="src\app\Services\modal-errors.service.ts" />
     <TypeScriptCompile Include="src\app\Services\recipe-requests.service.ts" />
   </ItemGroup>

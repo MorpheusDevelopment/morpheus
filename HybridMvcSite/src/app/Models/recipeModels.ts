@@ -14,6 +14,11 @@ export class IngredientModel {
   name: string;
 }
 
+export interface DropdownViewModel {
+  value: string;
+  viewValue: string;
+}
+
 export enum MeasuringTypeModel {
   Dash = 1,
   Teaspoon,
