@@ -6,6 +6,7 @@ namespace BusinessImplementationZone_Tests.Extenders
     [TestFixture, Category("StringExtenders Tests")]
     public class StringExtenders_Tests
     {
+        [TestCase(null, false), Category("StringExtenders SimplePalindromeCheck")]
         [TestCase("", true), Category("StringExtenders SimplePalindromeCheck")]
         [TestCase("bob", true), Category("StringExtenders SimplePalindromeCheck")]
         [TestCase("john", false), Category("StringExtenders SimplePalindromeCheck")]
