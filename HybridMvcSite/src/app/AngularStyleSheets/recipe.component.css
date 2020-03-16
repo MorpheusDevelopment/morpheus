@@ -1,2 +1,53 @@
-﻿body {
+.recipeSelection {
+  float: left;
+  width: 25%;
+}
+
+.recipeListItem {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recipeDetails {
+  float: left;
+  width: 75%;
+}
+
+.recipeName {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.recipeDescription {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.header {
+  padding-top: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.ingredientsBody {
+  padding-left: 10px;
+}
+
+.instructionsBody {
+  text-indent: 10px;
+}
+
+.close {
+  height: 100%;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.clear {
+  clear: both;
+  padding-top: 10px;
 }
