@@ -6,6 +6,7 @@ namespace BusinessImplementationZone.Extenders
     {
         public static bool SimplePalindromeCheck(this string input)
         {
+            input = input.ToLower();
             for (int i = 0; i < Math.Ceiling(((double)input.Length)/2); i++)
             {
                 if (input[i] != input[(input.Length-1) - i])
