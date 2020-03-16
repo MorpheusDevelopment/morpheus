@@ -14,7 +14,7 @@ namespace BusinessImplementationZone_Tests.Extenders
         [TestCase("Bob", true), Category("StringExtenders SimplePalindromeCheck")]
         public void StringExtenders_SimplePalindromeCheck(string input, bool expectedResult)
         {
-            Assert.AreEqual(input.SimplePalindromeCheck(), expectedResult);
+            Assert.AreEqual(expectedResult, input.SimplePalindromeCheck());
         }
     }
 }
